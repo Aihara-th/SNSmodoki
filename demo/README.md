@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このコードはrailstutorial(https://railstutorial.jp/)がベースになっています。
+勉強を兼ねて拡張を行っているため、非常に見苦しいものになっておりますがご了承願います。
 
-Things you may want to cover:
+現状、拡張したもの・排除したものは以下のとおりです。
 
-* Ruby version
 
-* System dependencies
+・登録情報数の増加
+・ユーザー間の匿名の段階的な解除の作成
+・返信機能、メッセージ機能の作成
+・一部の行動にポイントを付与する機能の作成
+・ランキングの作成
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+・フォロー(フォロワー)関係の削除
