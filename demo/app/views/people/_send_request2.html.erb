@@ -1,0 +1,4 @@
+<%= form_for(current_person.relationshipsB.find_by(personA_id: @user.id),
+             html: { method: :PATCH }) do |f| %>
+  <%= f.submit "Send request", class: "btn1" %>
+<% end %>

@@ -1,0 +1,43 @@
+<% provide(:title, @user.handlename) %>
+<div class="row">
+  <%= render 'request_form' if logged_in? %>
+  <%= render 'shared/info' %>
+  <aside class="col-md-4">
+    <section class="person_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= render 'shared/name' %>
+      </h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+      <% if !current_person?(@user) && logged_in? %>
+    <section class="message_box">
+      <section id="messages">
+        <%= render @messages %>
+      </section>
+    </section>
+    <script type="text/javascript">
+      var height = 0;
+      $("div.message").each( function() {
+        height += ($(this).height());
+      });
+      $('section.message_box').scrollTop(height);
+    </script>
+    <div class="message_form">
+     <%= render 'messages/message_form',
+       {from_person: current_person, to_person: @user, room_id: @room_id} %>
+    </div>
+  <% end %>
+  </aside>
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+    <h3>Questions (<%= @user.microposts.count %>)</h3>
+    <ol class="microposts">
+      <%= render @microposts %>
+    </ol>
+    <%= will_paginate @microposts %>
+    <% end %>
+  </div>
+</div>

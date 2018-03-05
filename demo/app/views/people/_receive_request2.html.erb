@@ -1,0 +1,6 @@
+<%= form_for(current_person.relationshipsB.find_by(personA_id: @user.id),
+             html: { method: :delete }) do |f| %>
+<%= f.submit "OK", class: "btn1" %>
+<%= f.submit "SlightlyOK", class: "btn1" %>
+<%= f.submit "Rejection", class: "btn1" %>
+<% end %>

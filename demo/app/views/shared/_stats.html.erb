@@ -1,0 +1,17 @@
+<% @user ||= current_person %>
+<div class="stats">
+  <a href="<%= requestlist_person_path(@user) %>">
+    <strong id="kankei" class="stat">
+      <%= @user.kankeiA.where("value > ? and sendA = ? and sendB = ? and waitA = ? and waitB = ?", 30, false, false, false, false ).count \
+      + @user.kankeiB.where("value > ? and sendA = ? and sendB = ? and waitA = ? and waitB = ?", 30, false, false, false, false ).count %>
+    </strong>
+    possible to send request
+  </a>
+  <a href="<%= receivelist_person_path(@user) %>">
+    <strong id="kankei" class="stat">
+      <%= @user.kankeiA.where("sendB = ? and waitB = ? and disclosure = ?", true, true, 0).count \
+      + @user.kankeiB.where("sendA = ? and waitA = ? and disclosure = ?", true, true, 0).count %>
+    </strong>
+    receive request
+  </a>
+</div>

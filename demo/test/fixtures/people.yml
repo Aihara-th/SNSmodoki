@@ -1,0 +1,62 @@
+michael:
+  handlename: M exa
+  sex: 0
+  syear: 2
+  bplace: boston
+  name: Michael Example
+  email: michael@example.com
+  tel: 001-2345-6789
+  password_digest: <%= Person.digest('password') %>
+  admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+archer:
+  handlename: S arch
+  sex: 1
+  syear: 3
+  bplace: tokyo
+  name: Sterling Archer
+  email: duchess@example.gov
+  tel: 001-2345-1119
+  password_digest: <%= Person.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+lana:
+  handlename: L Ka
+  sex: 0
+  syear: 1
+  bplace: miyagi
+  name: Lana Kane
+  email: hands@example.gov
+  tel: 001-2635-6789
+  password_digest: <%= Person.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+malory:
+  handlename: M arc
+  sex: 0
+  syear: 4
+  bplace: nagoya
+  name: Malory Archer
+  email: boss@example.gov
+  tel: 001-6895-6789
+  password_digest: <%= Person.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  handlename: <%= "U tes#{n}" %>
+  sex: rand(0..1)
+  syear: rand(1..4)
+  bplace: <%= "aomori#{n}" %>
+  name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  tel: <%= "008-6523-896 #{n}" %>
+  password_digest: <%= Person.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+<% end %>

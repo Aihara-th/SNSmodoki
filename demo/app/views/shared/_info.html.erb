@@ -1,0 +1,57 @@
+<div class="personinfo">
+<ul>
+<% if @user.sex == false %>
+<li> gender: male </li>
+<% else %>
+<li> gender: female </li>
+<% end %>
+<% if @user.syear <= 0 %>
+<li> professor </li>
+<% else %>
+<li> grade: <%= @user.syear %> </li>
+<% end %>
+<li> birth place: <%= @user.bplace %> </li>
+
+<% if current_person.relationshipsA.find_by(personB_id: @user.id).nil? %>
+<% else %>
+  <% if current_person.relationshipsA.find_by(personB_id: @user.id).disclosure == 1 %>
+    <li> email: <%= @user.email %> </li>
+    <li> telnumber: <%= @user.tel %> </li>
+  <% elsif current_person.relationshipsA.find_by(personB_id: @user.id).disclosure == 2 %>
+    <% if current_person.relationshipsA.find_by(personB_id: @user.id).value >= 45 %>
+      <li> email: <%= @user.email %> </li>
+    <% else %>
+    <% end %>
+    <% if current_person.relationshipsA.find_by(personB_id: @user.id).value >= 60 %>
+      <li> telnumber: <%= @user.tel %> </li>
+    <% else %>
+    <% end %>
+  <% else %>
+  <% end %>
+<% end %>
+
+<% if current_person.relationshipsB.find_by(personA_id: @user.id).nil? %>
+<% else %>
+  <% if current_person.relationshipsB.find_by(personA_id: @user.id).disclosure == 1 %>
+    <li> email: <%= @user.email %> </li>
+    <li> telnumber: <%= @user.tel %> </li>
+  <% elsif current_person.relationshipsB.find_by(personA_id: @user.id).disclosure == 2 %>
+    <% if current_person.relationshipsB.find_by(personA_id: @user.id).value >= 45 %>
+      <li> email: <%= @user.email %> </li>
+    <% else %>
+    <% end %>
+    <% if current_person.relationshipsB.find_by(personA_id: @user.id).value >= 60 %>
+      <li> telnumber: <%= @user.tel %> </li>
+    <% else %>
+    <% end %>
+  <% else %>
+  <% end %>
+<% end %>
+
+<% if current_person?(@user) %>
+  <li> email: <%= @user.email %> </li>
+  <li> telnumber: <%= @user.tel %> </li>
+<% else %>
+<% end %>
+</ul>
+</div>

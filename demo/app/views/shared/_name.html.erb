@@ -1,0 +1,19 @@
+<% if current_person.relationshipsA.find_by(personB_id: @user.id).nil? %>
+<% elsif current_person.relationshipsA.find_by(personB_id: @user.id).disclosure == 1 || \
+         current_person.relationshipsA.find_by(personB_id: @user.id).disclosure == 2 %>
+<%= @user.name %>
+<% else %>
+<%= @user.handlename %>
+<% end %>
+<% if current_person.relationshipsB.find_by(personA_id: @user.id).nil? %>
+<% elsif current_person.relationshipsB.find_by(personA_id: @user.id).disclosure == 1 || \
+         current_person.relationshipsB.find_by(personA_id: @user.id).disclosure == 2 %>
+<%= @user.name %>
+<% else %>
+<%= @user.handlename %>
+<% end %>
+<% if current_person.relationshipsA.find_by(personB_id: @user.id).nil? && \
+  current_person.relationshipsB.find_by(personA_id: @user.id).nil? %>
+<%= @user.handlename %>
+<% else %>
+<% end %>

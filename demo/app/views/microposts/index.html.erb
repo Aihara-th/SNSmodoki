@@ -1,0 +1,10 @@
+<% @articles.each do |micropost| %>
+  <div style="width:500px;border:1px solid #ccc;margin:5px">
+    <div style="float:left">
+      <h2 ><%= micropost.id %></h2>
+    </div>
+    <div style="clear:both">
+      <pre><%= micropost.content %></pre>
+    </div>
+  </div>
+<% end %>

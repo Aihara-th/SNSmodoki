@@ -1,0 +1,12 @@
+<% if current_person.canrequestA?(@user) %>
+<div id="request_form">
+  <%= render 'send_request' %>
+  <% elsif current_person.canrequestB?(@user) %>
+  <%= render 'send_request2' %>
+  <% elsif current_person.sendedA?(@user) && current_person.disclosureA?(@user) == false %>
+  <%= render 'receive_request' %>
+  <% elsif current_person.sendedB?(@user) && current_person.disclosureB?(@user) == false %>
+  <%= render 'receive_request2' %>
+  <% else %>
+</div>
+<% end %>

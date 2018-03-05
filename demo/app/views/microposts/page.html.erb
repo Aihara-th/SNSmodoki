@@ -1,0 +1,24 @@
+<div style="float:left">
+  <h3 >Question </h3>
+</div>
+<div style="clear:both">
+  <%= @article.content %>
+</div>
+<p><%= button_to "Agreeing", micropost_path, method: :patch %></p>
+
+<h3>comments：</h3>
+<% @article.comments.each do |comment| %>
+<h5> from <%= comment.from %></h5>
+<pre><%= comment.body %></pre>
+<% if logged_in? && comment.from == current_person.handlename %>
+<p>[<%= link_to 'reject comments',  [@article, comment],
+confirm: 'Are you sure?', method: :delete %>]</p>
+<% end %>
+<% end %>
+<h3>add comments：</h3>
+<%= form_for [@article, @comment] do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+<%= f.hidden_field :from, :value => current_person.handlename, class: 'form-control' %>
+<p>comment:</p><p><%= f.text_area :body, :rows => 5, class: 'form-control' %></p>
+<%= f.submit 'post comments' %>
+<% end %>
